@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
-
 const routes = require('./routes');
+
+const { username, password } = require('./credentials/mongodb-atlas.json');
 
 const app = express();
 const server = require('http').Server(app)
@@ -15,7 +16,7 @@ io.on('connection', socket => {
      connectedUsers[user] = socket.id;
 })
 
-mongoose.connect('mongodb+srv://meumongodb:minhasenha@cluster0-euas3.mongodb.net/omnistack8?retryWrites=true&w=majority', {
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0-euas3.mongodb.net/omnistack8?retryWrites=true&w=majority`, {
      useNewUrlParser: true 
 });
 
