@@ -17,7 +17,8 @@ io.on('connection', socket => {
 })
 
 mongoose.connect(`mongodb+srv://${username}:${password}@cluster0-euas3.mongodb.net/omnistack8?retryWrites=true&w=majority`, {
-     useNewUrlParser: true 
+     useNewUrlParser: true,
+     useUnifiedTopology: true
 });
 
 app.use((req, res, next) => {
